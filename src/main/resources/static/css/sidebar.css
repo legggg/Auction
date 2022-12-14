@@ -8,15 +8,15 @@ input[id="menuicon"] + label {
 
     display: block; /* 라벨을 블록으로 선언 */
 
-    width: 30px;    /* 라벨크기 */
+    width: 60px;    /* 라벨크기 */
 
-    height: 20px;
-
-    lint-height: 5px;
+    height: 50px;
 
     cursor: pointer;    /* 마우스를 올리면 커서 모양 변경 */
 
     position: relative; /* 내용물을 위한 선언 */
+
+    background-color: white;
 
 }
 
@@ -102,7 +102,7 @@ div[class="sidebar"] {
 
     height: 100%;
 
-    background: #ffffff;
+    background: white;
 
     position: fixed;    /* 드래그해서 내려도 고정화면 */
 
@@ -116,15 +116,9 @@ div[class="sidebar"] {
 
 }
 
-
-
-
-
-
 /* 아이콘 클릭했을 때 사이드바 모션 */
 
 input[id="menuicon"]:checked + label + div {
 
     left: 0;
-
 }

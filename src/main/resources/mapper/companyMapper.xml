@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.j.mapper.companyMapper">
+    <select id="getHrById" resultType="com.example.j.vo.hrVO">
+        SELECT *
+        FROM `hr`
+        WHERE hrId = #{hrId}
+    </select>
+    <insert id="insertHr" parameterType="com.example.j.vo.hrVO">
+        INSERT INTO `hr`
+        VALUES
+            (
+                #{hrId},
+                #{hrPw},
+                #{hrName},
+                #{hrPhNum},
+                #{hrEmail},
+                #{comNum}
+            )
+    </insert>
+    <insert id="insertCompany" parameterType="com.example.j.vo.hrVO">
+        INSERT INTO
+        `company`(comNum)
+        VALUE
+            (
+                ${comNum}
+            )
+
+    </insert>
+
+    <select id="getAuctionByComNum" resultType="com.example.j.vo.auctionVO">
+        SELECT *
+        FROM `auction`
+        WHERE comNum = #{comNum}
+    </select>
+    <resultMap type="com.example.j.vo.listVO" id="listVO">
+        <result column="title" property="title"/>
+    </resultMap>
+    <resultMap type="com.example.j.vo.auctionVO" id="auctionVO">
+        <result column="num" property="num"/>
+        <result column="hrId" property="hrId"/>
+        <result column="amount" property="amount"/>
+        <result column="date" property="date"/>
+        <result column="comContent" property="comContent"/>
+        <collection property="listVo" resultMap="listVO"/>
+    </resultMap>
+    <select id="selectAuctionAndList" resultMap="auctionVO">
+        SELECT
+            a.*
+             , b.title
+        FROM
+            `auction` a
+                LEFT JOIN
+            `list` b
+            ON
+                a.num = b.num
+        WHERE b.open='Y' AND a.hrId=#{hrId}
+        ORDER BY a.date desc
+    </select>
+        <insert id="insertAuction" parameterType="com.example.j.vo.auctionVO">
+        INSERT INTO `auction`
+        VALUES
+            (
+                #{num},
+                #{hrId},
+                #{amount},
+                #{date},
+                #{comContent}
+            )
+    </insert>
+    <select id="selectAuctionByNum" resultType="com.example.j.vo.auctionVO">
+        SELECT *
+        FROM `auction`
+        WHERE `num`=#{num}
+        ORDER BY amount desc
+    </select>
+    <update id="updateHr" parameterType="com.example.j.vo.hrVO">
+        UPDATE `hr`
+        SET hrPw = #{hrPw},
+            hrName = #{hrName},
+            hrPhNum = #{hrPhNum},
+            hrEmail = #{hrEmail}
+        WHERE hrId = #{hrId}
+    </update>
+
+
+</mapper>

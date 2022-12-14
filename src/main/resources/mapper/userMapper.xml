@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.j.mapper.userMapper">	<!-- mapper 인터페이스가 위치하는 경로 -->
+    <select id="getAdminList" resultType="com.example.j.vo.adminVO">	<!-- id: mapper 인터페이스에서 선언한 메서드 이름과 같아야 한다. resultType: VO 클래스가 위치하는 경로 -->
+        SELECT *
+        FROM `admin`
+        <!-- SQL문 작성 -->
+    </select>
+    <select id="getUserById" resultType="com.example.j.vo.userVO">
+        SELECT *
+        FROM `user`
+        WHERE userId = #{userId}
+    </select>
+    <!-- 회원가입 -->
+    <insert id="insertUser" parameterType="com.example.j.vo.userVO">
+        INSERT INTO `user`
+        VALUES
+            (
+                #{userId},
+                #{userPw},
+                #{userName},
+                #{userEmail},
+                #{userPhNum},
+                #{userBirth},
+                #{userGender},
+                #{userAddress},
+                #{userPurpose},
+                #{userCity}
+            )
+    </insert>
+    <!-- 회원정보 수정 -->
+    <update id="updateUser" parameterType="com.example.j.vo.userVO">
+        UPDATE `user`
+        SET userPw = #{userPw},
+            userName = #{userName},
+            userEmail = #{userEmail},
+            userPhNum = #{userPhNum},
+            userBirth = #{userBirth},
+            userGender = #{userGender},
+            userAddress = #{userAddress},
+            userPurpose = #{userPurpose}
+        WHERE userId = #{userId}
+    </update>
+    <!--학력-->
+    <select id="getGraduationById" resultType="com.example.j.vo.graduationVO">	<!-- id: mapper 인터페이스에서 선언한 메서드 이름과 같아야 한다. resultType: VO 클래스가 위치하는 경로 -->
+        SELECT *
+        FROM graduation
+        WHERE userId=#{userId}
+    </select>
+    <insert id="insertGraduation" parameterType="com.example.j.vo.graduationVO">
+        INSERT INTO `graduation`(userId,gradDate,gradName,gradType)
+        VALUES
+            (
+                #{userId,jdbcType=VARCHAR},
+                #{gradDate,jdbcType=DATE},
+                #{gradName,jdbcType=VARCHAR},
+                #{gradType,jdbcType=VARCHAR}
+            )
+    </insert>
+    <select id="getGraduationByIdNum" resultType="com.example.j.vo.graduationVO">
+        SELECT *
+        FROM `graduation`
+        WHERE userId = #{userId} AND num=#{num}
+    </select>
+
+    <update id="updateGrduation" parameterType="com.example.j.vo.graduationVO">
+        UPDATE `graduation`
+        SET gradName = #{gradName,jdbcType=VARCHAR},
+            gradDate = #{gradDate,jdbcType=DATE},
+            gradType = #{gradType}
+        WHERE num = #{num}
+    </update>
+    <delete id="deleteGraduation" parameterType="com.example.j.vo.graduationVO">
+        DELETE
+        FROM `graduation`
+        WHERE num=#{num}
+    </delete>
+    <!--경력-->
+    <select id="getHistoryById" resultType="com.example.j.vo.historyVO">	<!-- id: mapper 인터페이스에서 선언한 메서드 이름과 같아야 한다. resultType: VO 클래스가 위치하는 경로 -->
+        SELECT *
+        FROM `history`
+        WHERE userId=#{userId}
+    </select>
+    <select id="getHistoryByIdNum" resultType="com.example.j.vo.historyVO">
+        SELECT *
+        FROM `history`
+        WHERE userId = #{userId} AND historyNum=#{hnum}
+    </select>
+
+    <update id="updateHistroy" parameterType="com.example.j.vo.historyVO">
+        UPDATE `history`
+        SET comName = #{comName,jdbcType=VARCHAR},
+            comDepartment = #{comDepartment,jdbcType=VARCHAR},
+            cexp = #{cexp,jdbcType=VARCHAR},
+            startDate=#{startDate,jdbcType=DATE},
+            endDate=#{endDate,jdbcType=DATE}
+        WHERE historyNum = #{historyNum}
+    </update>
+    <delete id="deleteHistory" parameterType="com.example.j.vo.historyVO">
+        DELETE
+        FROM `history`
+        WHERE historyNum=#{hnum}
+    </delete>
+    <insert id="insertHistory" parameterType="com.example.j.vo.historyVO">
+        INSERT INTO `history`(userId,comName,comDepartment,cexp,startDate,endDate)
+        VALUES
+            (
+                #{userId,jdbcType=VARCHAR},
+                #{comName,jdbcType=VARCHAR},
+                #{comDepartment,jdbcType=VARCHAR},
+                #{cexp,jdbcType=VARCHAR},
+                #{startDate,jdbcType=DATE},
+                #{endDate,jdbcType=DATE}
+            )
+    </insert>
+    <!--이력서-->
+    <select id="getListById" resultType="com.example.j.vo.listVO">	<!-- id: mapper 인터페이스에서 선언한 메서드 이름과 같아야 한다. resultType: VO 클래스가 위치하는 경로 -->
+        SELECT *
+        FROM `list`
+        WHERE userId=#{userId}
+    </select>
+    <select id="getListByNum" resultType="com.example.j.vo.listVO">
+        SELECT *
+        FROM `list`
+        WHERE num=#{num}
+    </select>
+
+    <update id="updateList" parameterType="com.example.j.vo.listVO">
+        UPDATE `list`
+        SET title = #{title,jdbcType=VARCHAR},
+            content = #{content,jdbcType=VARCHAR},
+            `open`=#{open,jdbcType=VARCHAR}
+        WHERE num = #{num}
+    </update>
+    <delete id="deleteList" parameterType="com.example.j.vo.listVO">
+        DELETE
+        FROM `list`
+        WHERE num=#{num}
+    </delete>
+    <insert id="insertList" parameterType="com.example.j.vo.listVO">
+        INSERT INTO `list`(title,content,userId)
+        VALUES
+            (
+                #{title,jdbcType=VARCHAR},
+                #{content,jdbcType=VARCHAR},
+                #{userId,jdbcType=VARCHAR},
+                #{open,jdbcType=VARCHAR}
+            )
+    </insert>
+    <select id="getListByYes" resultType="com.example.j.vo.listVO">
+        SELECT *
+        FROM `list`
+        WHERE `open`='Y'
+    </select>
+
+
+    <resultMap type="com.example.j.vo.userVO" id="userVO">
+        <result column="userName" property="userName"/>
+        <result column="userCity" property="userCity"/>
+    </resultMap>
+    <resultMap type="com.example.j.vo.listVO" id="listVO">
+        <result column="num" property="num"/>
+        <result column="title" property="title"/>
+        <result column="userId" property="userId"/>
+        <result column="date" property="date"/>
+        <result column="content" property="content"/>
+        <result column="open" property="open"/>
+        <result column="endDate" property="endDate"/>
+        <result column="job" property="job"/>
+        <collection property="userVo" resultMap="userVO"/>
+    </resultMap>
+    <select id="selectListAndName" resultMap="listVO">
+        SELECT
+            a.*
+             , b.userName
+        FROM
+            `list` a
+                LEFT JOIN
+            `user` b
+            ON
+                a.userId = b.userId
+        WHERE a.open='Y' AND DATEDIFF(a.endDate, NOW())>0
+        ORDER BY a.num desc
+    </select>
+    <select id="getListByIdAfterNow" resultType="com.example.j.vo.listVO">	<!-- id: mapper 인터페이스에서 선언한 메서드 이름과 같아야 한다. resultType: VO 클래스가 위치하는 경로 -->
+        SELECT *
+        FROM `list`
+        WHERE DATEDIFF(endDate, NOW())>0 AND userId=#{userId};
+    </select>
+    <select id="getListByIdBeforeNow" resultType="com.example.j.vo.listVO">	<!-- id: mapper 인터페이스에서 선언한 메서드 이름과 같아야 한다. resultType: VO 클래스가 위치하는 경로 -->
+        SELECT *
+        FROM `list`
+        WHERE DATEDIFF(NOW(), endDate)>0 AND userId=#{userId};
+    </select>
+    <resultMap type="com.example.j.vo.hrVO" id="hrVO">
+        <result column="hrName" property="hrName"/>
+        <result column="hrPhNum" property="hrPhNum"/>
+        <result column="hrEmail" property="hrEmail"/>
+    </resultMap>
+    <resultMap type="com.example.j.vo.companyVO" id="companyVO">
+        <result column="comName" property="comName"/>
+    </resultMap>
+    <resultMap type="com.example.j.vo.auctionVO" id="auctionVO">
+        <result column="num" property="num"/>
+        <result column="hrId" property="hrId"/>
+        <result column="amount" property="amount"/>
+        <result column="date" property="date"/>
+        <result column="comContent" property="comContent"/>
+        <collection property="hrVo" resultMap="hrVO"/>
+        <collection property="companyVo" resultMap="companyVO"/>
+    </resultMap>
+    <select id="selectAuctionHrCompany" resultMap="auctionVO">
+        SELECT a.*, c.comName, h.hrName,h.hrPhNum,h.hrEmail
+        FROM company AS c JOIN hr AS h ON c.comNum=h.comNum
+                          JOIN auction AS a ON h.hrId=a.hrId
+        WHERE a.num=#{num}
+    </select>
+    <select id="getUser" resultType="com.example.j.vo.userVO">
+        SELECT *
+        FROM `user`
+    </select>
+
+    <select id="selectListByCity" resultMap="listVO">
+        SELECT
+            a.*
+             , b.userCity
+             , b.userName
+        FROM `list` a
+                 LEFT JOIN
+             `user` b
+             ON a.userId=b.userId
+        WHERE a.open='Y' AND DATEDIFF(a.endDate, NOW())>0
+        <choose>
+            <when test="num==0"> AND b.userCity="서울"</when>
+            <when test="num==1"> AND b.userCity="대구"</when>
+            <when test="num==2"> AND b.userCity="경북"</when>
+        </choose>
+        ORDER BY a.num desc
+    </select>
+    <select id="selectListByKeyword" resultMap="listVO">
+        SELECT
+        a.*
+        , b.userName
+        FROM
+        `list` a
+        LEFT JOIN
+        `user` b
+        ON
+        a.userId = b.userId
+        WHERE a.open='Y' AND DATEDIFF(a.endDate, NOW())>0
+        <choose>
+            <when test="type==null"></when>
+            <when test="type=='t'.toString()"> AND a.titl like CONCAT('%',#{keyword},'%')</when>
+            <when test="type=='n'.toString()"> AND b.userName like CONCAT('%',#{keyword},'%') </when>
+            <when test="type=='j'.toString()"> AND a.job like CONCAT('%',#{keyword},'%') </when>
+        </choose>
+        ORDER BY a.num desc
+    </select>
+
+
+</mapper>
