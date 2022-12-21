@@ -9,4 +9,6 @@ public class companyVO {
     private String comType;
     private String comCeo;
     private String comAddress;
+
+    private hrVO hrVo;
 }

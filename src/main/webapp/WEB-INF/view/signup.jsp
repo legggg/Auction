@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <link rel="icon" type="image/png" sizes="96x96" href="photo/topnew.png">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Sign Up</title>
     <%@include file="header/header.jsp"%>
@@ -86,8 +87,27 @@
                                     </div>
                                     <div class="col-md-6 mb-4">
                                         <div class="form-outline">
+                                            <label class="form-label" for="userName">이름</label>
+                                            <input type="text" id="userName" name="userName" placeholder="name" required  class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <div class="form-outline">
                                             <label class="form-label" for="userPw">비밀번호</label>
-                                            <input type="text" id="userPw" name="userPw" placeholder="pw"required class="form-control" />
+                                            <input type="password" id="userPw" name="userPw" placeholder="pw"required class="form-control" />
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <div class="form-outline">
+                                            <label class="form-label" for="userPurpose">비밀번호 확인</label>
+                                            <input type="password" id="user123" name="user123" placeholder="p123" required class="form-control" />
                                         </div>
                                     </div>
                                 </div>
@@ -95,14 +115,17 @@
                                 <div class="row">
                                     <div class="col-md-6 mb-4">
                                         <div class="form-outline">
-                                            <label class="form-label" for="userName">이름</label>
-                                            <input type="text" id="userName" name="userName" placeholder="name" required  class="form-control" />
+                                            <label class="form-label" for="userBirth">생년월일</label>
+                                            <input type="date" id="userBirth" name="userBirth" placeholder="birthday" required  class="form-control" />
+
+
                                         </div>
                                     </div>
                                     <div class="col-md-6 mb-4">
                                         <div class="form-outline">
                                             <label class="form-label" for="userEmail">Email</label>
                                             <input type="text" id="userEmail"  name="userEmail" placeholder="email" required  class="form-control" />
+
                                         </div>
                                     </div>
                                 </div>
@@ -112,35 +135,49 @@
                                         <div class="form-outline">
                                             <label class="form-label" for="userPhNum">핸드폰 번호</label>
                                             <input type="text" id="userPhNum" name="userPhNum" placeholder="phone number" required  class="form-control" />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 mb-4">
-                                        <div class="form-outline">
-                                            <label class="form-label" for="userBirth">생년월일</label>
-                                            <input type="date" id="userBirth" name="userBirth" placeholder="birthday" required  class="form-control" />
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <div class="row">
+                                        </div>
+                                    </div>
                                     <div class="col-md-6 mb-4">
                                         <div class="form-outline">
                                             <label class="form-label" for="userPurpose">가입 목적</label>
                                             <input type="text" id="userPurpose" name="userPurpose" placeholder="purpose" required class="form-control" />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 mb-4">
-                                        <div class="form-outline">
-                                            <input type="text" id="sample6_postcode" placeholder="우편번호">
-                                            <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-                                            <input type="text" id="sample6_address" name="userAddress" placeholder="주소"><br>
-                                            <input type="text" id="sample6_detailAddress" placeholder="상세주소">
-                                            <input type="text" id="sample6_extraAddress" placeholder="참고항목">
-                                            <input type="hidden" id="sample6_city" name="userCity" placeholder="도시">
 
                                         </div>
                                     </div>
                                 </div>
+
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <div class="form-outline">
+                                            <label class="form-label">주소</label>
+                                            <input class="form-control" type="text" id="sample6_postcode" placeholder="우편번호">
+                                            <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" class="btn btn-primary btn-block mb-4 display-center" style="margin-bottom: -20px !important;"><br>
+                                            <input class="form-control"type="text" id="sample6_address" name="userAddress" placeholder="주소" style="margin-top: 25px !important;"><br>
+                                            <input class="form-control"type="text" id="sample6_detailAddress" placeholder="상세주소" style="margin-bottom: 5px; margin-top: -20px">
+                                            <input class="form-control"type="text" id="sample6_extraAddress" placeholder="참고항목" >
+                                            <input type="hidden" id="sample6_city" name="userCity" placeholder="도시">
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <%--                                <div class="row">--%>
+                                <%--                                    <div class="col-md-6 mb-4">--%>
+                                <%--                                        <div class="form-outline">--%>
+
+
+
+                                <%--                                        </div>--%>
+                                <%--                                    </div>--%>
+
+                                <%--                                </div>--%>
+
+
+
 
                                 <!-- Password input -->
                                 <div class="form-outline mb-4">

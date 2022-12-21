@@ -2,6 +2,7 @@ package com.example.j.service;
 
 import com.example.j.mapper.adminMapper;
 import com.example.j.vo.adminVO;
+import com.example.j.vo.hrVO;
 import com.example.j.vo.listVO;
 import com.example.j.vo.userVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,4 +22,9 @@ public class adminService {
     public void deleteById(String id){adminMapper.deleteUser(id);}
 
     public List<listVO> getList(){return adminMapper.getList();}
+
+    public void deleteListByTitle(String title){adminMapper.deleteList(title);}
+    public  adminVO getAdminById(String id){return adminMapper.getAdminById(id);}
+
+    public List<hrVO> getHr(){return adminMapper.getHrWithCname();}
 }

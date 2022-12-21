@@ -13,6 +13,7 @@ public class listVO {
     private String content;
     private String open;
     private Date endDate;
+    private String endDate_1;
     private String job;
 
     private userVO userVo;

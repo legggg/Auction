@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <link rel="icon" type="image/png" sizes="96x96" href="photo/topnew.png">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Modify Information</title>
     <%@include file="../header/header.jsp"%>

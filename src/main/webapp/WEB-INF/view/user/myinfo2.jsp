@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <link rel="icon" type="image/png" sizes="96x96" href="photo/topnew.png">
     <%@include file="../header/header.jsp"%>
     <link href="css/table.css" rel="stylesheet">
     <link href="css/button.css" rel="stylesheet">
@@ -18,8 +19,8 @@
             <h3 style="text-align: center">개인정보</h3>
         </div>
 
-        <input type="file" class="real-upload" accept="image/*" required multiple style="display: none;">
-        <div class="upload" style="width: 300px; height: 300px; border: 1px solid black;margin: auto; display: block; ">   </div>
+        <input type="file" class="real-upload" accept="image/*" required multiple style="display: none;" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)" >
+        <div class="upload" style="width: 300px; height: 300px; border: 1px solid black;margin: auto; display: block; "> </div>
         <script>
             const realUpload = document.querySelector('.real-upload');
             const upload = document.querySelector('.upload');
@@ -27,8 +28,11 @@
             upload.addEventListener('click', () => realUpload.click());
         </script>
         <br>
-        <button class="btn" type="submit" style="margin:auto;display: block;" >저장하기</button>
+        <button style="position: relative; z-index: 1" class="btn" for="chooseFile"> 저장 </button>
         <br>
+
+
+
         <div class="info">
             <tr><td>이름</td><td>${userInfo.userName}</td></tr>
             <tr><td>성별</td><td>${userInfo.userGender}</td></tr>

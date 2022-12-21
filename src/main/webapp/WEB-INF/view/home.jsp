@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <link rel="icon" type="image/png" sizes="96x96" href="photo/topnew.png">
 
 
 
@@ -69,7 +70,7 @@
 
             </ul>
         </li>
-        <li><a href="#">Menu2</a>
+        <li><a href="#">직무별</a>
             <ul>
                 <li><a href="#">SubMenu1</a>
                 </li>
@@ -77,7 +78,7 @@
                 </li>
             </ul>
         </li>
-        <li><a href="#">Menu3</a>
+        <li><a href="#">나이별</a>
             <ul>
                 <li><a href="#">SubMenu1</a>
                 </li>
@@ -85,7 +86,7 @@
                 </li>
             </ul>
         </li>
-        <li><a href="#">Menu4</a>
+        <li><a href="#">학력별</a>
             <ul>
                 <li><a href="#">SubMenu1</a>
                 </li>
@@ -93,7 +94,7 @@
                 </li>
             </ul>
         </li>
-        <li><a href="#">Menu5</a>
+        <li><a href="#">전공별</a>
             <ul>
                 <li><a href="#">SubMenu1</a>
                 </li>
@@ -149,7 +150,7 @@
             <option value="j">희망직종</option>
         </select>
 
-        <input name="searchbox" id="searchbox" type="text" placeholder="&nbsp;검색어를 입력하세요">
+        <input name="searchKeyword" id="searchKeyword" type="text" placeholder="&nbsp;검색어를 입력하세요">
 
         <button style="border: 2px; padding: 4px">검색</button>
     </form>
@@ -165,7 +166,7 @@
                     <div class="col mb-5">
                         <div class="card h-100">
                             <!-- Product image-->
-                            <img class="card-img-top" src="../photo/브이.png" alt="..." />
+                            <img class="card-img-top" src="../photo/사람.png" alt="..." />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -189,7 +190,7 @@
                     <div class="col mb-5">
                         <div class="card h-100">
                             <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                            <img class="card-img-top" src="../photo/브이_넥타이.png" alt="..." />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">

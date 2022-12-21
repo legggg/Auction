@@ -6,6 +6,7 @@
 <html lang="ko">
 <head>
     <%@include file="header/header.jsp"%>
+    <link rel="icon" type="image/png" sizes="96x96" href="photo/topnew.png">
     <link href="css/table2.css" rel="stylesheet">
     <link href="css/button.css" rel="stylesheet">
     <link href="css/nav.css" rel="stylesheet">

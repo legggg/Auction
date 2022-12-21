@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <link rel="icon" type="image/png" sizes="96x96" href="photo/topnew.png">
     <%@include file="../header/header.jsp"%>
     <link href="css/table.css" rel="stylesheet">
     <link href="css/button.css" rel="stylesheet">
@@ -50,4 +51,7 @@
 </table>
 
 </body>
+<footer>
+    <%@include file="../header/footer.jsp"%>
+</footer>
 </html>

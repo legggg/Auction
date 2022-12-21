@@ -19,4 +19,40 @@
         SELECT *
         FROM `list`
     </select>
+
+    <delete id="deleteList" parameterType="com.example.j.vo.listVO">
+        DELETE
+        FROM `list`
+        WHERE title = #{title}
+    </delete>
+
+    <select id="getAdminById" resultType="com.example.j.vo.adminVO">
+        SELECT *
+        FROM `admin`
+        WHERE id = #{id}
+    </select>
+
+
+    <resultMap type="com.example.j.vo.companyVO" id="companyVO">
+        <result column="comName" property="comName"/>
+        <result column="comAddress" property="comAddress"/>
+    </resultMap>
+    <resultMap type="com.example.j.vo.hrVO" id="hrVO">
+        <result column="hrId" property="hrId"/>
+        <result column="hrName" property="hrName"/>
+        <result column="hrPhNum" property="hrPhNum"/>
+        <result column="hrEmail" property="hrEmail"/>
+        <collection property="companyVo" resultMap="companyVO"/>
+    </resultMap>
+
+    <select id="getHrWithCname" resultMap="hrVO">
+        SELECT  h.* , c.comName, c.comAddress
+        FROM
+            `hr` h
+                LEFT JOIN
+            `company` c
+            ON c.comNum=h.comNum
+    </select>
+
+
 </mapper>

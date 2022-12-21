@@ -28,6 +28,7 @@
 <%--    });--%>
 <%--</script>--%>
 <head>
+    <link rel="icon" type="image/png" sizes="96x96" href="photo/topnew.png">
     <title>Login</title>
     <%@include file="../header/header.jsp"%>
 </head>

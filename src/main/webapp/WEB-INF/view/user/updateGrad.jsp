@@ -3,30 +3,74 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <link rel="icon" type="image/png" sizes="96x96" href="photo/topnew.png">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Modify Information</title>
+    <%@include file="../header/header.jsp"%>
 </head>
 <body>
-<h2 style="font-size:1.5em">회원 정보 수정</h2>
 <form action="/updategrad" method="post">
-    <p>
-        학교이름<br>
-        <input type="text" name="gradName" value="${graduation.gradName}" required/>
-    </p>
-    <p>
-        졸업일<br>
-        <input type="date" name="gradDate" value="${graduation.gradDate}" required/>
-    </p>
-    <p>
-        전공<br>
-        <input type="text" name="gradType" value="${graduation.gradType}"/>
-    </p>
-    <p>
-        <input type="hidden" name="num" value="${graduation.num}" required/>
-    </p>
+
+    <section class=" text-center text-lg-start">
+        <style>
+            .rounded-t-5 {
+                border-top-left-radius: 0.5rem;
+                border-top-right-radius: 0.5rem;
+            }
+
+            @media (min-width: 992px) {
+                .rounded-tr-lg-0 {
+                    border-top-right-radius: 0;
+                }
+
+                .rounded-bl-lg-5 {
+                    border-bottom-left-radius: 0.5rem;
+                }
+            }
+        </style>
 
 
-    <button type="submit">저장하기</button>
+        <div class="card mb-3 align-items-center">
+            <br>
+            <h2 style="font-size:1.5em">학력 수정</h2>
+            <div class="col-lg-5 align-items-center">
+                <div class="card-body py-5 px-md-5">
+                    <section>
+                        <!-- Password input -->
+
+                        <div class="form-outline mb-4">
+                            <label class="form-label" for="gradName">학교이름</label>
+                            <input type="text" name="gradName" value="${graduation.gradName}" required id = "gradName" class="form-control" placeholder="학교이름" />
+                        </div>
+
+
+                        <div class="form-outline mb-4">
+                            <label class="form-label" for="gradType">전공</label>
+                            <input type="text" name="gradType" value="${graduation.gradType}" id = "gradType" class="form-control" placeholder="전공" />
+                        </div>
+
+
+                        <div class="form-outline mb-4">
+                            <label class="form-label" for="gradDate">졸업일</label>
+                            <input type="date"  name="gradDate" value="${graduation.gradDate}" id = "gradDate" class="form-control" placeholder="졸업일" />
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <input type="hidden" name="num" value="${graduation.num}" required/>
+                        </div>
+
+
+                        <button type="submit" class="btn btn-primary btn-block mb-4">저장하기</button>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </section>
+
 </form>
+
 </body>
+<footer>
+    <%@include file="../header/footer.jsp"%>
+</footer>
 </html>

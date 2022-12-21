@@ -67,7 +67,7 @@
         UPDATE `graduation`
         SET gradName = #{gradName,jdbcType=VARCHAR},
             gradDate = #{gradDate,jdbcType=DATE},
-            gradType = #{gradType}
+            gradType = #{gradType,jdbcType=VARCHAR}
         WHERE num = #{num}
     </update>
     <delete id="deleteGraduation" parameterType="com.example.j.vo.graduationVO">
@@ -129,7 +129,9 @@
         UPDATE `list`
         SET title = #{title,jdbcType=VARCHAR},
             content = #{content,jdbcType=VARCHAR},
-            `open`=#{open,jdbcType=VARCHAR}
+            job= #{job,jdbcType=VARCHAR},
+            endDate= #{endDate_1,jdbcType=DATE},
+            `open`= #{open,jdbcType=VARCHAR}
         WHERE num = #{num}
     </update>
     <delete id="deleteList" parameterType="com.example.j.vo.listVO">
@@ -138,13 +140,15 @@
         WHERE num=#{num}
     </delete>
     <insert id="insertList" parameterType="com.example.j.vo.listVO">
-        INSERT INTO `list`(title,content,userId)
+        INSERT INTO `list`(title,userId,content,open,endDate,job)
         VALUES
             (
                 #{title,jdbcType=VARCHAR},
-                #{content,jdbcType=VARCHAR},
                 #{userId,jdbcType=VARCHAR},
-                #{open,jdbcType=VARCHAR}
+                #{content,jdbcType=VARCHAR},
+                #{open,jdbcType=VARCHAR},
+                #{endDate_1,jdbcType=DATE},
+                #{job,jdbcType=VARCHAR}
             )
     </insert>
     <select id="getListByYes" resultType="com.example.j.vo.listVO">
@@ -250,7 +254,7 @@
         WHERE a.open='Y' AND DATEDIFF(a.endDate, NOW())>0
         <choose>
             <when test="type==null"></when>
-            <when test="type=='t'.toString()"> AND a.titl like CONCAT('%',#{keyword},'%')</when>
+            <when test="type=='t'.toString()"> AND a.title like CONCAT('%',#{keyword},'%')</when>
             <when test="type=='n'.toString()"> AND b.userName like CONCAT('%',#{keyword},'%') </when>
             <when test="type=='j'.toString()"> AND a.job like CONCAT('%',#{keyword},'%') </when>
         </choose>

@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -122,7 +124,7 @@ public class userController {
         String id = (String) session.getAttribute("id");
         userVo.setUserId(id);
         userService.modifyInfo(userVo);
-        return "redirect:/myinfo";
+        return "redirect:/myinfo2";
     }
 
     @GetMapping("/myinfo")
@@ -196,7 +198,7 @@ public class userController {
             e.printStackTrace();
             return "redirect:/signup?error_code=-99";
         }
-        return "redirect:/myinfo";
+        return "redirect:/myinfo2";
     }
 
     @GetMapping("/updategrad")
@@ -209,13 +211,13 @@ public class userController {
     @PostMapping("/updategrad")
     public String updateGrad(HttpSession session, graduationVO gVo) { // 회원 정보 수정
         userService.updateGrduation(gVo);
-        return "redirect:/myinfo";
+        return "redirect:/myinfo2";
     }
     @GetMapping("/deletegrad")
     public String deleteGrad(@RequestParam("num") int num) { // 회원 정보 수정
         userService.deleteGraduation(num);
 
-        return "redirect:/myinfo";
+        return "redirect:/myinfo2";
     }
     //경력
     @GetMapping("/addhis")
@@ -234,7 +236,7 @@ public class userController {
             e.printStackTrace();
             return "redirect:/signup?error_code=-99";
         }
-        return "redirect:/myinfo";
+        return "redirect:/myinfo2";
     }
     @GetMapping("/updatehis")
     public String toupdateHistory(@RequestParam("num") int hnum,HttpSession session, Model model) { // 회원 정보 수정
@@ -246,13 +248,13 @@ public class userController {
     @PostMapping("/updatehis")
     public String updateHistory(historyVO hVo) { // 회원 정보 수정
         userService.updateHistroy(hVo);
-        return "redirect:/myinfo";
+        return "redirect:/myinfo2";
     }
     @GetMapping("/deletehis")
     public String deleteHistory(@RequestParam("num") int hnum) { // 회원 정보 수정
         userService.deleteHistory(hnum);
 
-        return "redirect:/myinfo";
+        return "redirect:/myinfo2";
     }
     //이력서
     @GetMapping("/updatelist")
@@ -289,7 +291,7 @@ public class userController {
             e.printStackTrace();
             return "redirect:/signup?error_code=-99";
         }
-        return "redirect:/myinfo";
+        return "redirect:/mylist";
     }
 
 }

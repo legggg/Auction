@@ -10,4 +10,6 @@ public class hrVO {
     private String hrPhNum;
     private String hrEmail;
     private String comNum;
+
+    private companyVO companyVo;
 }

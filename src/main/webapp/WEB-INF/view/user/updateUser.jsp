@@ -3,12 +3,12 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <link rel="icon" type="image/png" sizes="96x96" href="photo/topnew.png">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Modify Information</title>
     <%@include file="../header/header.jsp"%>
 </head>
 <body>
-<h2 회원 정보 수정 ></h2>
 <form action="/update" method="post">
 
 
@@ -32,6 +32,8 @@
 
 
         <div class="card mb-3 align-items-center">
+            <br>
+            <h2> 회원 정보 수정 </h2>
             <div class="col-lg-5 align-items-center">
                 <div class="card-body py-5 px-md-5">
                     <section>
